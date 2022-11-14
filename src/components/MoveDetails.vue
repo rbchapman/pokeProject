@@ -11,7 +11,6 @@
       <h3>{{ movePower2 || 40 }}</h3>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -49,7 +48,6 @@ export default {
     },
   },
 
-
   async mounted() {
     await this.getMoveData()
   },
@@ -70,13 +68,12 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 15px;
 }
 
 .move2 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: -20px;
 }
-
 </style>

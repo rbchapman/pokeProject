@@ -12,11 +12,9 @@ export default {
 </script>
 
 <style>
-
 .type-img {
   width: 35px;
   height: 35px;
   margin-top: 10px;
 }
-
 </style>

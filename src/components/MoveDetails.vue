@@ -2,13 +2,13 @@
   <div class="move-details">
     <div class="move1">
       <Type class="detail-img" v-bind:type="type1" />
-      <h3>{{ setCaps(move1) }}</h3>
+      <h3>{{ this.$parent.setCaps(move1) }}</h3>
       <h3>{{ movePower1 || 20 }}</h3>
     </div>
     <div class="move2">
       <Type class="detail-img" v-bind:type="type2" />
-      <h3>{{ setCaps(move2) }}</h3>
-      <h3>{{ movePower2 || 20 }}</h3>
+      <h3>{{ this.$parent.setCaps(move2) }}</h3>
+      <h3>{{ movePower2 || 40 }}</h3>
     </div>
   </div>
 
@@ -47,23 +47,11 @@ export default {
       this.movePower2 = response2.data.power
       this.type2 = response2.data.type.name
     },
-    setCaps (word) {
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    },
-
-    // formatMoves (word) {
-    //   if (word.includes ('-')) {
-    //     let index = word.indexOf('-')
-    //     return this.setCaps(word)
-    //   }
-    //   return word.includes('-') ? word.replace('-', ' ') : word
-    // },
   },
 
 
   async mounted() {
     await this.getMoveData()
-
   },
 }
 </script>

@@ -1,10 +1,10 @@
 <template>
   <div class="card-container">
-    <div class="card" :style="{'background-image':`url(${background})`}">
+    <div class="card" :style="{'background-image':`url(/src/assets/${this.setColor(this.type)}.png)`}">
       <div class="pokedetails">
           <h3>{{ setCaps(name) }}</h3>
         <div class="hp-type">
-            <h3>{{ hp }}</h3>
+            <h3> HP {{ hp }}</h3>
             <Type v-bind:type="type"/>
         </div>
       </div>
@@ -26,13 +26,11 @@
 import axios from 'axios'
 import MoveDetails from '@/components/MoveDetails.vue'
 import Type from '@/components/Type.vue'
-import Evolution from '@/components/Evolution.vue'
 
 export default {
   components: {
     MoveDetails,
     Type,
-    Evolution,
   },
 
   data() {
@@ -43,7 +41,6 @@ export default {
       picture: '',
       move1: '',
       move2: '',
-      background: ''
     }
   },
 
@@ -64,37 +61,34 @@ export default {
       return word.charAt(0).toUpperCase() + word.slice(1);
     },
 
-    setColor () {
-      console.log(this.type)
-      if (this.type === 'ice' || 'water') {
-        console.log(this.background)
-        this.background = '/src/assets/blue.png'
+    setColor (type) {
+      if (type === 'ice' || type === 'water') {
+        return 'blue'
       }
 
-      if (this.type === 'normal' || 'rock') {
-        this.background = '/src/assets/grey.png'
+      if (type === 'normal' || type === 'rock') {
+        return 'grey'
       }
 
-      else if (this.type === 'fire' || 'fighting') {
-        this.background = '/src/assets/orange.png'
+      else if (type === 'fire' || type === 'fighting') {
+        return 'red'
       }
 
-      else if (this.type === 'grass' || 'bug') {
-        this.background = '/src/assets/green.png'
+      else if (type === 'grass' || type === 'bug') {
+        return 'green'
       }
 
-      else if (this.type === 'fairy' || 'psychic' || 'poison') {
-        this.background = '/src/assets/pink.png'
+      else if (type === 'fairy' || type === 'psychic' || type === 'poison') {
+        return 'pink'
       }
 
-      else if (this.type === 'lightning' || 'dragon') {
-        this.background = '/src/assets/yellow.png'
+      else if (type === 'electric' || type === 'dragon') {
+        return 'yellow'
       }
 
-      else if (this.type === 'ghost' || 'ground') {
-        this.background = '/src/assets/brown.png'
+      else if (type === 'ghost' || type === 'ground') {
+        return 'brown'
       }
-      console.log(this.background)
     },
 
     // getRanId() {

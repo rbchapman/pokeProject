@@ -1,12 +1,11 @@
 <template>
-  <div class="container">
-    <div class="card" :style="{'background-image':`url(${this.background})`}">
+  <div class="card-container">
+    <div class="card" :style="{'background-image':`url(${background})`}">
       <div class="pokedetails">
           <h3>{{ setCaps(name) }}</h3>
         <div class="hp-type">
             <h3>{{ hp }}</h3>
             <Type v-bind:type="type"/>
-            <!-- <img class="type" :src="symbol" alt=""> -->
         </div>
       </div>
       <div class="pokepic">
@@ -18,13 +17,9 @@
       </div>
     </div>
   </div>
-  <button class="btn" type="button" @click="getPokeData(); this.$refs.moves.getMoveData()"
-  :style="{ 'background-image': 'url(src/assets/pokeball.png)'}">find a pokemon</button>
-  <!-- <img src="src/assets/pokeball.png" alt=""> -->
-  <!-- connecting pokecard to evolution methods -->
+  <button class="btn" type="button" @click="getPokeData"
+  >choose your pokemon</button>
 
-    <!-- <Evolution v-bind:name="name" /> -->
-    <!-- $refs.moves.getMoveData() -->
 </template>
 
 <script>
@@ -42,8 +37,6 @@ export default {
 
   data() {
     return {
-      pokedata: [],
-      id: 0,
       name: '',
       hp: 0,
       type: '',
@@ -64,8 +57,7 @@ export default {
       this.move1 = this.pokedata.moves[15].move.name
       this.move2 = this.pokedata.moves[10].move.name
       this.type = this.pokedata.types[0].type.name
-      this.setColor()
-
+      this.$refs.moves.getMoveData()
     },
 
     setCaps (word) {
@@ -74,9 +66,10 @@ export default {
 
     setColor () {
       console.log(this.type)
-      // if (this.type === 'ice' || 'water') {
-      //   this.background = '/src/assets/blue.png'
-      // }
+      if (this.type === 'ice' || 'water') {
+        console.log(this.background)
+        this.background = '/src/assets/blue.png'
+      }
 
       if (this.type === 'normal' || 'rock') {
         this.background = '/src/assets/grey.png'
@@ -101,14 +94,6 @@ export default {
       else if (this.type === 'ghost' || 'ground') {
         this.background = '/src/assets/brown.png'
       }
-      // ice water = blue
-      // normal rock = grey
-      // fire fighting = orange
-      // grass bug = green
-      // fairy psychic poison = pink
-      // lightning dragon = yellow
-      // ghost ground
-
       console.log(this.background)
     },
 
@@ -121,7 +106,6 @@ export default {
   async mounted() {
     await this.getPokeData()
     await this.$refs.moves.getMoveData()
-
   }
 }
 
@@ -184,8 +168,11 @@ export default {
   height: 100px;
   border-radius: 50%;
   border: 2px solid black;
-  background-image: url('/src/assets/pokeball.png') !important;
+  background-image: url("/src/assets/pokemo_ball.jpg") !important;
+  background-position: center;
+  background-size: cover;
 }
+
 
 .type {
   width: 35%;

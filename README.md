@@ -21,7 +21,7 @@ Front-End challenge for [GoParity](https://www.goparity.com) - November 2022
 
 ## Project Goals
 
-The goal of this project was to showcase my front-end development skills and highlight my ability to learn different languages and frameworks.
+The goal of this project was to showcase my front-end development skills and highlight my ability to learn and use different technologies and frameworks.
 
 ## Approach
 
@@ -40,7 +40,7 @@ First, I went through the Vue documentation and watched some tutorial videos to 
 
 To run this app locally:
 
-1. Run `git clone git@github.com:mcfrann/ww-takehome.git` in your command line
+1. Run `gh repo clone rbchapman/pokeProject` in your command line
 2. Run `cd pokeProject` to navigate into the repository
 3. Run `npm install` to install dependencies
 4. Run `npm run dev`
@@ -53,4 +53,5 @@ Moving forward I plan to carry on with the project:
   - fix the issue with the delayed display of data regarding the type and power of the selected move
   - refactor for more DRY code
   - continued improvement of styling
+  - add more stats and other information to the pokemon card
   - create buttons to display the different stages of evolution of any randomly generated Pokemon
